@@ -1,0 +1,23 @@
+<header class="border-b fixed bg-white w-full z-10">
+  <div class="container mx-auto px-2 flex gap-2 items-center py-4">
+    <h1 class="font-bold text-blue-500 text-2xl flex-grow">
+      <a routerLink="">Course Advizor</a>
+    </h1>
+    <nav class="relative">
+      <button class="md:hidden" (click)="toggleMenu()">
+        <mat-icon class="text-blue-500">menu</mat-icon>
+      </button>
+      <ul 
+        [class.sr-only]="hideMenu"
+        class="absolute p-2 right-0 bg-white shadow rounded min-w-max md:not-sr-only md:static md:p-0 md:flex md:gap-4 md:shadow-none"
+        >
+        <li class="mb-2 md:mb-0">
+          <a class="block p-2 font-bold text-gray-500 border rounded" routerLink="/course-advisers">Course Advisers</a>
+        </li>
+        <li>
+          <a class="block bg-blue-500 text-white p-2 rounded font-bold hover:bg-blue-400" routerLink="/sign-in">SIGN IN</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
