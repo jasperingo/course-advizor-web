@@ -1,0 +1,17 @@
+
+<li class="mb-4">
+  <div class="flex gap-2 py-1">
+    <img 
+      width="100" height="100s" 
+      alt="User picture" 
+      src="/assets/images/user.webp" 
+      class="w-20 h-20 border rounded-full"
+      />
+    <div>
+      <div class="font-bold">{{ item?.firstName }} {{ item?.lastName }}</div>
+      <div>{{ item?.department?.name }} ({{ item?.department?.abbreviation }})</div>
+      <div class="text-gray-500">{{ item?.session?.startedAt }}/{{ item?.session?.endedAt }} session</div>
+      <a routerLink="/course-adviser/{{ item?.id }}/student" class="inline-block text-blue-500 underline">I'm your student</a>
+    </div>
+  </div>
+</li>

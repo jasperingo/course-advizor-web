@@ -1,4 +1,8 @@
 
-<app-header></app-header>
+<app-header *ngIf="onIndex"></app-header>
 
-<router-outlet></router-outlet>
+<main class="pb-40 pt-20">
+  <router-outlet></router-outlet>
+</main>
+
+<app-footer *ngIf="onIndex"></app-footer>

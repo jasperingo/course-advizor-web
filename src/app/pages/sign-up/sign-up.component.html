@@ -1,0 +1,58 @@
+
+<div class="container mx-auto px-2 py-8 flex items-center justify-center md:py-16">
+  
+  <form
+    *ngIf="sessionLoaded"
+    [formGroup]="signUpForm"
+    (ngSubmit)="onSubmit()"
+    class="w-full px-4 py-8 rounded shadow shadow-blue-500 md:w-96"
+    >
+    
+    <app-form-field 
+      [parentForm]="signUpForm"
+      controlName="firstName"
+      inputId="first-name-input"
+      labelText="First name"
+      >
+    </app-form-field>
+
+    <app-form-field 
+      [parentForm]="signUpForm"
+      controlName="lastName"
+      inputId="last-name-input"
+      labelText="Last name"
+      >
+    </app-form-field>
+
+    <app-form-field 
+      [parentForm]="signUpForm"
+      controlName="phoneNumber"
+      maxLength="11"
+      inputId="phone-number-input" 
+      inputType="tel" 
+      labelText="Phone number"
+      lengthError="Phone number must be 11 characters long"
+      >
+    </app-form-field>
+
+    <app-form-field 
+      [parentForm]="signUpForm"
+      controlName="pin"
+      maxLength="4"
+      inputId="pin-input" 
+      inputType="password" 
+      labelText="Pin"
+      lengthError="Pin must be 4 characters long"
+      >
+    </app-form-field>
+
+    <app-form-select></app-form-select>
+
+    <app-form-button label="Sign up" [loading]="loading"></app-form-button>
+
+  </form>
+
+
+  <app-loading *ngIf="sessionLoading" size="big"></app-loading>
+
+</div>

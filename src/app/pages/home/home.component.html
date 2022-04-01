@@ -1,36 +1,33 @@
 
-<main>
+<div class="container mx-auto px-2">
+  
+  <section class="flex gap-4 justify-between items-center pb-4 md:h-screen">
+  
+    <div class="py-4">
+      <h2 class="font-bold text-5xl mb-4 lg:text-7xl xl:text-8xl">An IVR <br/> course advising assistant.</h2>
+      <a routerLink="sign-up" class="inline-block font-bold bg-blue-500 text-white p-4 rounded hover:bg-blue-400">Get started</a>
+    </div>
 
-  <div class="container mx-auto px-2">
+    <img 
+      width="200" height="200" 
+      src="/assets/images/home.jpg" 
+      alt="A lady making a phone call" 
+      class="sr-only my-4 bg-gray-300 md:static md:rounded md:w-1/2 md:h-full" 
+      />
     
-    <section class="flex gap-4 justify-between items-center pt-20 pb-4 md:h-screen">
+  </section>
+
+  <section class="py-4">
+
+    <h3 class="font-bold text-2xl mb-4">Features</h3>
     
-      <div class="py-4">
-        <h2 class="font-bold text-5xl mb-4 lg:text-7xl xl:text-8xl">An IVR <br/> course advising assistant.</h2>
-        <a class="inline-block font-bold bg-blue-500 text-white p-4 rounded hover:bg-blue-400">Get started</a>
-      </div>
+    <ul class="w-full md:flex md:gap-2 md:items-stretch">
+      <li app-home-feature photo="feature-result.jpg" text="Result checking"></li>
+      <li app-home-feature photo="feature-appointment.jpg" text="Appointment Scheduling"></li>
+      <li app-home-feature photo="feature-report.jpg" text="Sending reports"></li>
+    </ul>
 
-      <img 
-        width="200" height="200" 
-        src="/assets/images/home.jpg" 
-        alt="A lady making a phone call" 
-        class="sr-only my-4 bg-gray-300 md:static md:rounded md:w-1/2 md:h-full" 
-        />
-      
-    </section>
+  </section>
 
-    <section class="py-4">
+</div>
 
-      <h3 class="font-bold text-2xl mb-4">Features</h3>
-      
-      <ul class="w-full md:flex md:gap-2 md:items-stretch">
-        <li app-home-feature photo="feature-result.jpg" text="Result checking"></li>
-        <li app-home-feature photo="feature-appointment.jpg" text="Appointment Scheduling"></li>
-        <li app-home-feature photo="feature-report.jpg" text="Sending reports"></li>
-      </ul>
-
-    </section>
-
-  </div>
-
-</main>
