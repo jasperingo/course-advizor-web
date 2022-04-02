@@ -1,7 +1,10 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { map } from 'rxjs';
+import { AppModule } from 'src/app/app.module';
 import { ResponseDTO } from 'src/app/dtos/ResponseDTO';
 import { CourseAdviser } from 'src/app/models/CourseAdviser';
-import { HttpService } from 'src/app/services/http/http.service';
+import { ClassMapperService } from 'src/app/services/class-mapper/class-mapper.service';
 
 @Component({
   selector: 'app-course-advisers',
@@ -18,7 +21,7 @@ export class CourseAdvisersComponent implements OnInit {
 
   list: CourseAdviser[] = [];
 
-  constructor(private httpService: HttpService) { }
+  constructor(private httpService: HttpClient, private classMapper: ClassMapperService) { }
 
   ngOnInit(): void {
     if (!this.loading && !this.loaded) {
@@ -37,12 +40,13 @@ export class CourseAdvisersComponent implements OnInit {
     this.loading = true;
 
     this.httpService
-      .get<ResponseDTO<CourseAdviser[]>>('course-adviser', CourseAdviser)
+      .get(AppModule.toApiUrl('course-adviser'))
+      .pipe(this.classMapper.responseToInstance(CourseAdviser))
       .subscribe({ 
         next: data => {
           this.loaded = true;
           this.loading = false;
-          this.list = data.data as CourseAdviser[];
+          this.list = data.data;
         }, 
         error: () =>  {
           this.loading = false;

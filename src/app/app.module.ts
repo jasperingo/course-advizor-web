@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { MatIconModule } from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
@@ -17,7 +17,6 @@ import { LoadingComponent } from './components/loading/loading.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { ResponseMapperInterceptor } from './services/response-mapper/response-mapper.interceptor';
 import { ListEmptyComponent } from './components/list-empty/list-empty.component';
 import { ErrorBoxComponent } from './components/error-box/error-box.component';
 import { ListComponent } from './components/list/list.component';
@@ -25,6 +24,8 @@ import { CourseAdviserItemComponent } from './components/course-adviser-item/cou
 import { CourseAdviserStudentComponent } from './pages/course-adviser-student/course-adviser-student.component';
 import { FormButtonComponent } from './components/form-button/form-button.component';
 import { FormSelectComponent } from './components/form-select/form-select.component';
+import { environment } from 'src/environments/environment';
+import { FormMessageComponent } from './components/form-message/form-message.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { FormSelectComponent } from './components/form-select/form-select.compon
     CourseAdviserItemComponent,
     CourseAdviserStudentComponent,
     FormButtonComponent,
-    FormSelectComponent
+    FormSelectComponent,
+    FormMessageComponent
   ],
   imports: [
     BrowserModule,
@@ -55,9 +57,13 @@ import { FormSelectComponent } from './components/form-select/form-select.compon
     BrowserAnimationsModule,
     ReactiveFormsModule
   ],
-  providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: ResponseMapperInterceptor, multi: true }
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+
+  static toApiUrl(path: string) {
+    return `${environment.apiUrl}${path}`;
+  }
+
+}

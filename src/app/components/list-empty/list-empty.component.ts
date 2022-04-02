@@ -1,15 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-list-empty',
   templateUrl: './list-empty.component.html',
   styleUrls: ['./list-empty.component.css']
 })
-export class ListEmptyComponent implements OnInit {
+export class ListEmptyComponent {
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  @Input() text = '';
+  
 }

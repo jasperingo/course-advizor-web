@@ -1,11 +1,12 @@
 <div class="relative mb-4" [formGroup]="parentForm">
   <label [for]="inputId" class="absolute px-2 font-bold">{{ labelText }}</label>
-  <input 
-    [formControlName]="controlName" 
+  <select 
     [id]="inputId" 
-    [type]="inputType"
-    [maxlength]="maxLength"
-    class="w-full rounded block pt-5 px-2 pb-2 border border-blue-500 outline-none disabled:text-gray-400" 
-    />
+    [formControlName]="controlName"
+    class="w-full rounded block pt-5 px-2 pb-2 bg-white border border-blue-500 outline-none disabled:text-gray-400" 
+    >
+    <option value=""></option>
+    <option *ngFor="let option of options" [value]="option.value">{{ option.text }}</option>
+  </select>
   <span class="text-red-500 text-sm">{{ error }}</span>
 </div>

@@ -22,6 +22,8 @@ export class FormFieldComponent implements OnInit {
 
   @Input() lengthError = '';
 
+  @Input() serverError = '';
+
   constructor() { }
 
   ngOnInit(): void {
@@ -41,6 +43,10 @@ export class FormFieldComponent implements OnInit {
 
       if (this.control?.errors?.['maxlength'] || this.control?.errors?.['minlength']) {
         return this.lengthError;
+      }
+
+      if (this.control?.errors?.['fromServer']) {
+        return this.serverError;
       }
 
     }

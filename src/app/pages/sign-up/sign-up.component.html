@@ -2,17 +2,20 @@
 <div class="container mx-auto px-2 py-8 flex items-center justify-center md:py-16">
   
   <form
-    *ngIf="sessionLoaded"
     [formGroup]="signUpForm"
     (ngSubmit)="onSubmit()"
+    *ngIf="sessionLoaded && departmentLoaded"
     class="w-full px-4 py-8 rounded shadow shadow-blue-500 md:w-96"
     >
+
+    <app-form-message [error]="error"></app-form-message>
     
     <app-form-field 
       [parentForm]="signUpForm"
       controlName="firstName"
       inputId="first-name-input"
       labelText="First name"
+      [serverError]="firstNameServerError"
       >
     </app-form-field>
 
@@ -21,6 +24,7 @@
       controlName="lastName"
       inputId="last-name-input"
       labelText="Last name"
+      [serverError]="lastNameServerError"
       >
     </app-form-field>
 
@@ -32,6 +36,7 @@
       inputType="tel" 
       labelText="Phone number"
       lengthError="Phone number must be 11 characters long"
+      [serverError]="phoneNumberServerError"
       >
     </app-form-field>
 
@@ -43,16 +48,39 @@
       inputType="password" 
       labelText="Pin"
       lengthError="Pin must be 4 characters long"
+      [serverError]="pinServerError"
       >
     </app-form-field>
 
-    <app-form-select></app-form-select>
+    <app-form-select
+      [parentForm]="signUpForm"
+      controlName="sessionId"
+      inputId="session-input"
+      labelText="Session"
+      [options]="sessions"
+      [serverError]="sessionIdServerError"
+      >
+    </app-form-select>
+
+    <app-form-select
+      [parentForm]="signUpForm"
+      controlName="departmentId"
+      inputId="department-input"
+      labelText="Department"
+      [options]="departments"
+      [serverError]="departmentIdServerError"
+      >
+    </app-form-select>
 
     <app-form-button label="Sign up" [loading]="loading"></app-form-button>
 
+    <div class="text-center pt-4">
+      <span>Already have an account? </span>
+      <a routerLink="/sign-in" class="text-blue-500">Sign in</a>
+    </div>
+
   </form>
 
-
-  <app-loading *ngIf="sessionLoading" size="big"></app-loading>
+  <app-loading *ngIf="sessionLoading || departmentLoading" size="big"></app-loading>
 
 </div>
