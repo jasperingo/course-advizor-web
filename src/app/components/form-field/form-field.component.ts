@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 @Component({
@@ -6,7 +6,7 @@ import { FormGroup } from '@angular/forms';
   templateUrl: './form-field.component.html',
   styleUrls: ['./form-field.component.css']
 })
-export class FormFieldComponent implements OnInit {
+export class FormFieldComponent {
 
   @Input() inputId!: string;
 
@@ -20,14 +20,9 @@ export class FormFieldComponent implements OnInit {
 
   @Input() maxLength = '';
 
-  @Input() lengthError = '';
+  @Input() errors!: Map<string, string>;
 
-  @Input() serverError = '';
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+  shown = false;
 
   get control() {
     return this.parentForm.get(this.controlName);
@@ -42,16 +37,20 @@ export class FormFieldComponent implements OnInit {
       }
 
       if (this.control?.errors?.['maxlength'] || this.control?.errors?.['minlength']) {
-        return this.lengthError;
+        return this.errors.get('maxlength');
       }
 
       if (this.control?.errors?.['fromServer']) {
-        return this.serverError;
+        return this.errors.get('fromServer');
       }
 
     }
 
     return null;
+  }
+
+  toggleVisibility() {
+    this.shown = !this.shown;
   }
 
 }

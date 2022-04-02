@@ -15,7 +15,7 @@
       controlName="firstName"
       inputId="first-name-input"
       labelText="First name"
-      [serverError]="firstNameServerError"
+      [errors]="firstNameError"
       >
     </app-form-field>
 
@@ -24,7 +24,7 @@
       controlName="lastName"
       inputId="last-name-input"
       labelText="Last name"
-      [serverError]="lastNameServerError"
+      [errors]="lastNameError"
       >
     </app-form-field>
 
@@ -35,8 +35,7 @@
       inputId="phone-number-input" 
       inputType="tel" 
       labelText="Phone number"
-      lengthError="Phone number must be 11 characters long"
-      [serverError]="phoneNumberServerError"
+      [errors]="phoneNumberError"
       >
     </app-form-field>
 
@@ -47,8 +46,7 @@
       inputId="pin-input" 
       inputType="password" 
       labelText="Pin"
-      lengthError="Pin must be 4 characters long"
-      [serverError]="pinServerError"
+      [errors]="pinError"
       >
     </app-form-field>
 
@@ -58,7 +56,7 @@
       inputId="session-input"
       labelText="Session"
       [options]="sessions"
-      [serverError]="sessionIdServerError"
+      [errors]="sessionIdError"
       >
     </app-form-select>
 
@@ -68,7 +66,7 @@
       inputId="department-input"
       labelText="Department"
       [options]="departments"
-      [serverError]="departmentIdServerError"
+      [errors]="departmentIdError"
       >
     </app-form-select>
 

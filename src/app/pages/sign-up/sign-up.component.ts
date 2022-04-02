@@ -23,17 +23,18 @@ export class SignUpComponent implements OnInit {
 
   error: string | null = null;
 
-  firstNameServerError = '';
+  firstNameError = new Map<string, string>();
 
-  lastNameServerError = '';
+  lastNameError = new Map<string, string>();
   
-  phoneNumberServerError = '';
+  sessionIdError = new Map<string, string>();
 
-  pinServerError = '';
+  departmentIdError = new Map<string, string>();
 
-  sessionIdServerError = '';
+  pinError = new Map<string, string>([['maxlength', 'Pin must be 4 characters long']]);
 
-  departmentIdServerError = '';
+  phoneNumberError = new Map<string, string>([['maxlength', 'Phone number must be 11 characters long']]);
+
 
   sessionLoaded = false;
 
@@ -42,6 +43,7 @@ export class SignUpComponent implements OnInit {
   sessionError: string | null = null;
 
   sessions: FormSelectOptionsType = [];
+
 
   departmentLoaded = false;
 
@@ -123,15 +125,17 @@ export class SignUpComponent implements OnInit {
   }
 
   onSubmit() {
-    
+
+    if (this.loading) return;
+
     if (!this.signUpForm.valid) {
       this.signUpForm.markAllAsTouched();
       return;
     }
 
-    if (this.loading) return;
-
     this.loading = true;
+
+    this.signUpForm.disable();
 
     this.httpService
       .post<ResponseDTO<CourseAdviser>>(
@@ -142,11 +146,14 @@ export class SignUpComponent implements OnInit {
       .subscribe({ 
         next: res => {
           this.loading = false;
+          this.signUpForm.enable();
           this.courseAdviserService.courseAdviser = res.data;
           this.router.navigateByUrl('/account/dashboard');
         },
         error: (error) =>  {
           this.loading = false;
+
+          this.signUpForm.enable();
           
           switch(error.status) {
 
@@ -165,32 +172,32 @@ export class SignUpComponent implements OnInit {
     for (let err of errors) {
       switch(err.name) {
         case 'first_name':
-          this.firstNameServerError = err.message;
+          this.firstNameError.set('fromServer', err.message);
           this.signUpForm.controls['firstName'].setErrors({ fromServer: true });
           break;
 
         case 'last_name':
-          this.lastNameServerError = err.message;
+          this.lastNameError.set('fromServer', err.message);
           this.signUpForm.controls['lastName'].setErrors({ fromServer: true });
           break;
 
         case 'phone_number':
-          this.phoneNumberServerError = err.message;
+          this.phoneNumberError.set('fromServer', err.message);
           this.signUpForm.controls['phoneNumber'].setErrors({ fromServer: true });
           break;
 
         case 'pin':
-          this.pinServerError = err.message;
+          this.pinError.set('fromServer', err.message);
           this.signUpForm.controls['pin'].setErrors({ fromServer: true });
           break;
 
         case 'session_id':
-          this.sessionIdServerError = err.message;
+          this.sessionIdError.set('fromServer', err.message);
           this.signUpForm.controls['sessionId'].setErrors({ fromServer: true });
           break;
 
         case 'department_id':
-          this.departmentIdServerError = err.message;
+          this.departmentIdError.set('fromServer', err.message);
           this.signUpForm.controls['departmentId'].setErrors({ fromServer: true });
           break;
 

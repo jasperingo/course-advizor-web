@@ -1,13 +1,20 @@
 
 <div class="relative mb-4" [formGroup]="parentForm">
   <label [for]="inputId" class="absolute px-2 font-bold">{{ labelText }}</label>
+  <button 
+    type="button" 
+    *ngIf="inputType === 'password'" 
+    (click)="toggleVisibility()"
+    class="absolute px-2 right-0 active:bg-gray-300"
+    >
+    <mat-icon class="text-base">{{ shown ? 'visibility_off' : 'visibility' }}</mat-icon>
+  </button>
   <input 
     [formControlName]="controlName" 
     [id]="inputId" 
-    [type]="inputType"
+    [type]="inputType === 'password' && shown ? 'text' : inputType"
     [maxlength]="maxLength"
     class="w-full rounded block pt-5 px-2 pb-2 bg-white border border-blue-500 outline-none disabled:text-gray-400" 
     />
   <span class="text-red-500 text-sm">{{ error }}</span>
 </div>
-

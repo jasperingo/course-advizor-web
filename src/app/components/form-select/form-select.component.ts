@@ -20,7 +20,7 @@ export class FormSelectComponent {
 
   @Input() options: FormSelectOptionsType = [];
 
-  @Input() serverError = '';
+  @Input() errors!: Map<string, string>;
 
   get control() {
     return this.parentForm.get(this.controlName);
@@ -35,7 +35,7 @@ export class FormSelectComponent {
       }
 
       if (this.control?.errors?.['fromServer']) {
-        return this.serverError;
+        return this.errors.get('fromServer');
       }
 
     }
