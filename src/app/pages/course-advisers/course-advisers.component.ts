@@ -1,8 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { map } from 'rxjs';
 import { AppModule } from 'src/app/app.module';
-import { ResponseDTO } from 'src/app/dtos/ResponseDTO';
 import { CourseAdviser } from 'src/app/models/CourseAdviser';
 import { ClassMapperService } from 'src/app/services/class-mapper/class-mapper.service';
 

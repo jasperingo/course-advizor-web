@@ -4,7 +4,7 @@
       <a routerLink="">Course Advizor</a>
     </h1>
     <nav class="relative">
-      <button class="md:hidden" (click)="toggleMenu()">
+      <button class="hover:bg-blue-100 md:hidden" (click)="toggleMenu()">
         <mat-icon class="text-blue-500">menu</mat-icon>
       </button>
       <ul 
@@ -12,7 +12,7 @@
         class="absolute p-2 right-0 bg-white shadow rounded min-w-max md:not-sr-only md:static md:p-0 md:flex md:gap-4 md:shadow-none"
         >
         <li class="mb-2 md:mb-0">
-          <a class="block p-2 font-bold text-gray-500 border rounded" routerLink="/account/dashboard">Dashboard</a>
+          <a class="block p-2 font-bold text-gray-500 border rounded" routerLink="/account">Dashboard</a>
         </li>
         <li class="mb-2 md:mb-0">
           <a class="block p-2 font-bold text-gray-500 border rounded" routerLink="/course-advisers">Course Advisers</a>

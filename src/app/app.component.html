@@ -1,7 +1,9 @@
 
 <app-header *ngIf="onIndex"></app-header>
 
-<main class="pb-40 pt-20">
+<app-account-header *ngIf="!onIndex"></app-account-header>
+
+<main [class.md:ml-80]="!onIndex" class="pb-40 pt-20">
   <router-outlet></router-outlet>
 </main>
 

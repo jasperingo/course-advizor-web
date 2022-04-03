@@ -1,5 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AccountAppointmentsComponent } from './pages/account-appointments/account-appointments.component';
+import { AccountProfileComponent } from './pages/account-profile/account-profile.component';
+import { AccountReportsComponent } from './pages/account-reports/account-reports.component';
+import { AccountResultsComponent } from './pages/account-results/account-results.component';
+import { AccountStudentsComponent } from './pages/account-students/account-students.component';
 import { CourseAdviserStudentComponent } from './pages/course-adviser-student/course-adviser-student.component';
 import { CourseAdvisersComponent } from './pages/course-advisers/course-advisers.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
@@ -22,7 +27,12 @@ const routes: Routes = [
   { 
     path: 'account', 
     children: [
-      { path: 'dashboard', component: DashboardComponent }
+      { path: '', component: DashboardComponent },
+      { path: 'students', component: AccountStudentsComponent },
+      { path: 'results', component: AccountResultsComponent },
+      { path: 'appointments', component: AccountAppointmentsComponent },
+      { path: 'reports', component: AccountReportsComponent },
+      { path: 'profile', component: AccountProfileComponent },
     ]
   }
 ];

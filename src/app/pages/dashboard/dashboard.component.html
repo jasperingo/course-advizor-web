@@ -1,1 +1,32 @@
-<p>dashboard works!</p>
+<div class="container mx-auto px-2">
+
+  <h2 class="mb-8 font-bold text-4xl">
+    Welcome, {{ courseAdviserService.courseAdviser?.firstName }} {{ courseAdviserService.courseAdviser?.lastName }}.
+  </h2>
+
+  <section>
+  
+    <h3 class="mb-2 font-bold text-xl">Statistics</h3>
+    
+    <ul *ngIf="statistics !== null" class="grid gap-4 md:grid-cols-2">
+      <app-dashboard-item [value]="statistics.numberOfStudents ?? 0" text="Number of students"></app-dashboard-item>
+      <app-dashboard-item [value]="statistics.numberOfResults ?? 0" text="Number of results"></app-dashboard-item>
+      <app-dashboard-item [value]="statistics.numberOfPendingAppointments ?? 0" text="Number of pending appointments"></app-dashboard-item>
+      <app-dashboard-item [value]="statistics.numberOfPendingReports ?? 0" text="Number of pending reports"></app-dashboard-item>
+      <app-dashboard-item [value]="statistics.numberOfAppointments ?? 0" text="Number of appointments"></app-dashboard-item>
+      <app-dashboard-item [value]="statistics.numberOfReports ?? 0" text="Number of reports"></app-dashboard-item>
+    </ul>
+
+    <app-loading *ngIf="loading" class="block col-span-2" size="big"></app-loading>
+      
+    <app-error-box 
+      *ngIf="error !== null" 
+      class="block col-span-2" 
+      [message]="error"
+      (action)="retryFetchStatistics()"
+      >
+    </app-error-box>
+
+  </section>
+
+</div>

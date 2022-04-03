@@ -81,4 +81,12 @@
 
   <app-loading *ngIf="sessionLoading || departmentLoading" size="big"></app-loading>
 
+  <app-error-box
+    *ngIf="sessionError !== null || departmentError !== null" 
+    class="block" 
+    [message]="sessionError || departmentError || ''"
+    (action)="retryFetchSessionsOrDepartments()"
+    >
+  </app-error-box>
+
 </div>

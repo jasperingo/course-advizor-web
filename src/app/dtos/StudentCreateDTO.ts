@@ -1,6 +1,6 @@
 import { Expose, Type } from "class-transformer";
 
-export class CourseAdviserCreateDTO {
+export class StudentCreateDTO {
 
   @Expose({ name: 'first_name' })
   firstName?: string;
@@ -11,15 +11,11 @@ export class CourseAdviserCreateDTO {
   @Expose({ name: 'phone_number' })
   phoneNumber?: string;
 
-  @Expose()
-  pin?: string;
+  @Expose({ name: 'matriculation_number' })
+  matriculationNumber?: string;
 
   @Type(()=> Number)
-  @Expose({ name: 'session_id' })
-  sessionId?: number;
-
-  @Type(()=> Number)
-  @Expose({ name: 'department_id' })
-  departmentId?: number;
+  @Expose({ name: 'course_adviser_id' })
+  courseAdviserId?: number;
 
 }

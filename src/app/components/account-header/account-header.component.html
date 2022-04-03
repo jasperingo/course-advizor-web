@@ -1,0 +1,47 @@
+<header class="border-b fixed bg-white w-full z-10 md:pl-80">
+  <div class="container mx-auto px-2 flex gap-2 items-center py-4">
+    
+    <nav 
+      [class.left-0]="!hideMenu"
+      [class.-left-full]="hideMenu"
+      class="fixed bg-white top-0 h-full w-3/4 overflow-auto transition-all border-r md:w-80 md:left-0"
+      >
+      <button class="float-right m-2 hover:bg-blue-100 md:hidden" (click)="toggleMenu()">
+        <mat-icon class="text-blue-500">close</mat-icon>
+      </button>
+      <ul class="flex flex-col justify-center h-full">
+        <app-account-header-nav-button text="Dashboard" href="/account" icon="dashboard"></app-account-header-nav-button>
+        <app-account-header-nav-button text="Students" href="/account/students" icon="school"></app-account-header-nav-button>
+        <app-account-header-nav-button text="Results" href="/account/results" icon="history_edu"></app-account-header-nav-button>
+        <app-account-header-nav-button text="Appointments" href="/account/appointments" icon="event_available"></app-account-header-nav-button>
+        <app-account-header-nav-button text="Reports" href="/account/reports" icon="report"></app-account-header-nav-button>
+      </ul>
+    </nav>
+
+    <button class="md:hidden hover:bg-blue-100" (click)="toggleMenu()">
+      <mat-icon class="text-blue-500 align-middle">menu</mat-icon>
+    </button>
+
+    <h1 class="font-bold text-blue-500 text-2xl flex-grow truncate">Account</h1>
+
+    <ul class="flex gap-4 items-center">
+      <li>
+        <a routerLink="/" class="block hover:bg-blue-100">
+          <mat-icon class="text-blue-500 align-middle">home</mat-icon>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/account/profile" class="block">
+          <img 
+            width="20"
+            height="20"
+            alt="Course Adviser avatar"
+            src="/assets/images/user.webp"
+            class="border w-8 h-8 rounded-full"
+            />
+        </a>
+      </li>
+    </ul>
+
+  </div>
+</header>

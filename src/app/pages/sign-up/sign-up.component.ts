@@ -56,10 +56,10 @@ export class SignUpComponent implements OnInit {
   signUpForm = new FormGroup({
     firstName: new FormControl('', [Validators.required]),
     lastName: new FormControl('', [Validators.required]),
-    phoneNumber: new FormControl('', [Validators.required, Validators.minLength(11), Validators.maxLength(11)]),
-    pin: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(4)]),
     sessionId: new FormControl('', [Validators.required]),
-    departmentId: new FormControl('', [Validators.required])
+    departmentId: new FormControl('', [Validators.required]),
+    pin: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(4)]),
+    phoneNumber: new FormControl('', [Validators.required, Validators.minLength(11), Validators.maxLength(11)])
   });
 
   constructor(
@@ -78,6 +78,14 @@ export class SignUpComponent implements OnInit {
     if (!this.departmentLoaded) {
       this.fetchDepartments();
     }
+  }
+
+  retryFetchSessionsOrDepartments() {
+    if (this.departmentError !== null)
+      this.fetchDepartments();
+
+    if (this.sessionError !== null)
+      this.fetchSessions();
   }
 
   fetchDepartments() {
@@ -127,6 +135,8 @@ export class SignUpComponent implements OnInit {
   onSubmit() {
 
     if (this.loading) return;
+
+    this.error = null;
 
     if (!this.signUpForm.valid) {
       this.signUpForm.markAllAsTouched();

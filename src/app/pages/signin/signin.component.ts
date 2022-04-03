@@ -40,6 +40,8 @@ export class SigninComponent {
 
     if (this.loading) return;
 
+    this.error = null;
+
     if (!this.signInForm.valid) {
       this.signInForm.markAllAsTouched();
       return;

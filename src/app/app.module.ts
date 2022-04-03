@@ -16,7 +16,7 @@ import { FormFieldComponent } from './components/form-field/form-field.component
 import { LoadingComponent } from './components/loading/loading.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { DashboardComponent, DashboardItemComponent } from './pages/dashboard/dashboard.component';
 import { ListEmptyComponent } from './components/list-empty/list-empty.component';
 import { ErrorBoxComponent } from './components/error-box/error-box.component';
 import { ListComponent } from './components/list/list.component';
@@ -26,6 +26,12 @@ import { FormButtonComponent } from './components/form-button/form-button.compon
 import { FormSelectComponent } from './components/form-select/form-select.component';
 import { environment } from 'src/environments/environment';
 import { FormMessageComponent } from './components/form-message/form-message.component';
+import { AccountHeaderComponent, AccountHeaderNavButtonComponent } from './components/account-header/account-header.component';
+import { AccountStudentsComponent } from './pages/account-students/account-students.component';
+import { AccountResultsComponent } from './pages/account-results/account-results.component';
+import { AccountAppointmentsComponent } from './pages/account-appointments/account-appointments.component';
+import { AccountReportsComponent } from './pages/account-reports/account-reports.component';
+import { AccountProfileComponent } from './pages/account-profile/account-profile.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +53,15 @@ import { FormMessageComponent } from './components/form-message/form-message.com
     CourseAdviserStudentComponent,
     FormButtonComponent,
     FormSelectComponent,
-    FormMessageComponent
+    FormMessageComponent,
+    AccountHeaderComponent,
+    AccountHeaderNavButtonComponent,
+    AccountStudentsComponent,
+    AccountResultsComponent,
+    AccountAppointmentsComponent,
+    AccountReportsComponent,
+    AccountProfileComponent,
+    DashboardItemComponent
   ],
   imports: [
     BrowserModule,
