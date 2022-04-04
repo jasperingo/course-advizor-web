@@ -6,7 +6,7 @@
 
   <tbody>
 
-    <ng-container *ngFor="let item of data">
+    <ng-container *ngFor="let item of data; trackBy: trackById">
       <ng-container *ngTemplateOutlet="rowTemplate; context: { $implicit: item }"></ng-container>
     </ng-container>
 

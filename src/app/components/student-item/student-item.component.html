@@ -1,15 +1,13 @@
-<li class="mb-4">
-  <div class="flex gap-2 py-1">
-    <img 
-      width="100" height="100" 
-      alt="User picture" 
-      src="/assets/images/user.webp" 
-      class="w-20 h-20 border rounded-full"
-      />
-    <div>
-      <div class="font-bold">{{ item.firstName }} {{ item.lastName }}</div>
-      <div>{{ item.matriculationNumber }}</div>
-      <a href="tel:{{ item.phoneNumber }}" class="text-blue-500">{{ item.phoneNumber }}</a>
-    </div>
-  </div>
-</li>
+
+<td class="border p-2 rounded">
+  {{ item.id }}
+</td>
+<td class="border p-2 rounded">
+  {{ item.firstName }} {{ item.lastName }}
+</td>
+<td class="border p-2 rounded">
+  {{ item.matriculationNumber }}
+</td>
+<td class="border p-2 rounded">
+  <a href="tel:{{ item.phoneNumber }}" class="text-blue-500">{{ item.phoneNumber }}</a>
+</td>

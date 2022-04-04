@@ -1,9 +1,12 @@
 <li class="mb-4">
   <div class="shadow shadow-blue-500 p-2 rounded">
-    <div class="font-bold">{{ item.student?.firstName }} {{ item.student?.lastName }}</div>
-    <div>{{ item.student?.matriculationNumber }}</div>
-    <a href="tel:{{ item.student?.phoneNumber }}" class="text-blue-500">{{ item.student?.phoneNumber }}</a>
-    
+    <div class="mb-2 row-span-2">
+      <div class="font-bold">Student details</div>
+      <div>{{ item.student?.firstName }} {{ item.student?.lastName }}</div>
+      <div>{{ item.student?.matriculationNumber }}</div>
+      <a href="tel:{{ item.student?.phoneNumber }}" class="text-blue-500">{{ item.student?.phoneNumber }}</a>
+    </div>
+
     <div class="mb-2 flex gap-2 items-center">
       <span class="font-bold">Sent on:</span>
       <span>{{ item.createdAt | date }}</span>
@@ -32,6 +35,34 @@
   </div>
 
   <app-modal *ngIf="showModal">
-    Yam
+    <form [formGroup]="updateForm" (ngSubmit)="onUpdateSubmit()" class="p-4">
+
+      <app-form-message [error]="updateError" [success]="updateSuccess"></app-form-message>
+
+      <app-form-textarea
+        [parentForm]="updateForm"
+        controlName="reply"
+        inputId="reply-input"
+        labelText="Enter your reply"
+        >
+      </app-form-textarea>
+
+      <div class="flex gap-2 items-center" *ngIf="!updateLoading; else updateLoader">
+        <button 
+          type="button"
+          (click)="toggleModal()"
+          class="flex-grow p-2 font-bold rounded bg-gray-500 text-white hover:bg-gray-400" 
+          >
+          Close
+        </button>
+
+        <app-form-button label="Reply" [loading]="false" class="flex-grow"></app-form-button>
+      </div>
+
+      <ng-template #updateLoader>
+        <app-loading></app-loading>
+      </ng-template>
+
+    </form>
   </app-modal>
 </li>

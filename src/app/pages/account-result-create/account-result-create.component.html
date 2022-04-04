@@ -1,1 +1,58 @@
-<p>account-result-create works!</p>
+<div class="container mx-auto px-2 py-8 flex items-center justify-center md:py-16">
+  
+  <form
+    [formGroup]="resultForm"
+    (ngSubmit)="onSubmit()"
+    *ngIf="sessionLoaded"
+    class="w-full px-4 py-8 rounded shadow shadow-blue-500 md:w-96"
+    >
+
+    <h2 class="mb-4 font-bold text-2xl">New result</h2>
+
+    <app-form-message [error]="error"></app-form-message>
+    
+    <app-form-field 
+      [parentForm]="resultForm"
+      controlName="courseCode"
+      inputId="course-code-input"
+      labelText="Course code"
+      maxLength="6"
+      [errors]="courseCodeError"
+      >
+    </app-form-field>
+
+    <app-form-select
+      [parentForm]="resultForm"
+      controlName="semester"
+      inputId="semester-input"
+      labelText="Semester"
+      [options]="semesters"
+      [errors]="semesterError"
+      >
+    </app-form-select>
+
+    <app-form-select
+      [parentForm]="resultForm"
+      controlName="sessionId"
+      inputId="session-input"
+      labelText="Session"
+      [options]="sessions"
+      [errors]="sessionIdError"
+      >
+    </app-form-select>
+
+    <app-form-button label="Submit" [loading]="loading"></app-form-button>
+
+  </form>
+
+  <app-loading *ngIf="sessionLoading" size="big"></app-loading>
+
+  <app-error-box
+    *ngIf="sessionError !== null" 
+    class="block" 
+    [message]="sessionError"
+    (action)="retryFetchSessions()"
+    >
+  </app-error-box>
+
+</div>

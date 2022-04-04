@@ -1,28 +1,51 @@
 <div class="container mx-auto px-2">
 
-  <app-list [data]="list" classes="md:grid md:grid-cols-2 md:gap-2">
+  <h2 class="font-bold text-2xl mb-4">Students</h2>
 
-    <ng-template let-item>
-      <app-student-item [item]="item"></app-student-item>
-    </ng-template>
-    
-    <app-loading *ngIf="loading" class="block col-span-2" size="big"></app-loading>
-    
-    <app-error-box 
-      *ngIf="error !== null" 
-      class="block col-span-2" 
-      [message]="error"
-      (action)="retryFetchList()"
-      >
-    </app-error-box>
+  <div class="border rounded p-2 overflow-auto">
 
-    <app-list-empty 
-      text="No student found" 
-      class="block col-span-2"
-      *ngIf="loaded && list.length === 0" 
-      >
-    </app-list-empty>
+    <app-table [data]="list">
+
+      <tr head>
+        <th class="py-3 px-2 text-left">S/N</th>
+        <th class="py-3 px-2 text-left">Full name</th>
+        <th class="py-3 px-2 text-left">Matriculation number</th>
+        <th class="py-3 px-2 text-left">Phone number</th>
+      </tr>
+
+      <ng-template let-item>
+        <tr app-student-item [item]="item"></tr>
+      </ng-template>
+      
+      <tr *ngIf="loading">
+        <td class="border rounded p-2" colspan="4">
+          <app-loading *ngIf="loading" class="block col-span-2" size="big"></app-loading>
+        </td>
+      </tr> 
+
+      <tr *ngIf="loading">
+        <td class="border rounded p-2" colspan="4">
+          <app-error-box 
+            *ngIf="error !== null" 
+            class="block col-span-2" 
+            [message]="error"
+            (action)="retryFetchList()"
+            >
+          </app-error-box>
+        </td>
+      </tr> 
+      
+      <tr *ngIf="loading">
+        <td class="border rounded p-2" colspan="4">
+          <app-list-empty 
+            text="No student found" 
+            class="block col-span-2"
+            *ngIf="loaded && list.length === 0" 
+            >
+          </app-list-empty>
+        </td>
+      </tr> 
     
-  </app-list>
+  </app-table>
 
 </div>

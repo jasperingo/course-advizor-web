@@ -65,7 +65,7 @@ export class CourseAdviserStudentComponent implements OnInit {
   }
 
   retryFetchCourseAdviser() {
-    this.courseAdviserLoading = false;
+    this.courseAdviserError = null;
     this.fetchCourseAdviser();
   }
 

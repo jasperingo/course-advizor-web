@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 import { AppModule } from 'src/app/app.module';
 import { FormSelectOptionsType } from 'src/app/components/form-select/form-select.component';
 import { CourseAdviserCreateDTO } from 'src/app/dtos/CourseAdviserCreateDTO';
-import { ResponseDTO } from 'src/app/dtos/ResponseDTO';
 import { CourseAdviser } from 'src/app/models/CourseAdviser';
 import { Department } from 'src/app/models/Department';
 import { Session } from 'src/app/models/Session';
@@ -81,11 +80,15 @@ export class SignUpComponent implements OnInit {
   }
 
   retryFetchSessionsOrDepartments() {
-    if (this.departmentError !== null)
+    if (this.departmentError !== null) {
+      this.departmentError = null;
       this.fetchDepartments();
+    }
 
-    if (this.sessionError !== null)
+    if (this.sessionError !== null) {
+      this.sessionError = null;
       this.fetchSessions();
+    }
   }
 
   fetchDepartments() {
@@ -101,7 +104,7 @@ export class SignUpComponent implements OnInit {
         next: data => {
           this.departmentLoaded = true;
           this.departmentLoading = false;
-          this.departments = data.data.map((i: Department)=> ({ value: String(i.id), text: String(i.name) }));
+          this.departments = data.data.map(i => ({ value: String(i.id), text: String(i.name) }));
         },
         error: () =>  {
           this.departmentLoading = false;
@@ -123,7 +126,7 @@ export class SignUpComponent implements OnInit {
         next: data => {
           this.sessionLoaded = true;
           this.sessionLoading = false;
-          this.sessions = data.data.map((i: Session)=> ({ value: String(i.id), text: `${i.startedAt}/${i.endedAt}` }));
+          this.sessions = data.data.map(i => ({ value: String(i.id), text: `${i.startedAt}/${i.endedAt}` }));
         },
         error: () =>  {
           this.sessionLoading = false;
@@ -148,7 +151,7 @@ export class SignUpComponent implements OnInit {
     this.signUpForm.disable();
 
     this.httpService
-      .post<ResponseDTO<CourseAdviser>>(
+      .post(
         AppModule.toApiUrl('course-adviser'), 
         this.classMapper.toPlain(this.signUpForm.value, CourseAdviserCreateDTO)
       )

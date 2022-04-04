@@ -1,7 +1,7 @@
 
 <ul [class]="classes">
 
-  <ng-container *ngFor="let item of data">
+  <ng-container *ngFor="let item of data; trackBy: trackById">
     <ng-container *ngTemplateOutlet="itemTemplate; context: { $implicit: item }"></ng-container>
   </ng-container>
 

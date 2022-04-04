@@ -10,11 +10,11 @@
         <mat-icon class="text-blue-500">close</mat-icon>
       </button>
       <ul class="clear-right md:flex md:flex-col md:justify-center md:h-full">
-        <app-account-header-nav-button text="Dashboard" href="/account" icon="dashboard"></app-account-header-nav-button>
-        <app-account-header-nav-button text="Students" href="/account/students" icon="school"></app-account-header-nav-button>
-        <app-account-header-nav-button text="Results" href="/account/results" icon="history_edu"></app-account-header-nav-button>
-        <app-account-header-nav-button text="Appointments" href="/account/appointments" icon="event_available"></app-account-header-nav-button>
-        <app-account-header-nav-button text="Reports" href="/account/reports" icon="report"></app-account-header-nav-button>
+        <app-account-header-nav-button text="Dashboard" href="/account" icon="dashboard" (onLinkClick)="toggleMenu()"></app-account-header-nav-button>
+        <app-account-header-nav-button text="Students" href="/account/students" icon="school" (onLinkClick)="toggleMenu()"></app-account-header-nav-button>
+        <app-account-header-nav-button text="Results" href="/account/results" icon="history_edu" (onLinkClick)="toggleMenu()"></app-account-header-nav-button>
+        <app-account-header-nav-button text="Appointments" href="/account/appointments" icon="event_available" (onLinkClick)="toggleMenu()"></app-account-header-nav-button>
+        <app-account-header-nav-button text="Reports" href="/account/reports" icon="report" (onLinkClick)="toggleMenu()"></app-account-header-nav-button>
       </ul>
     </nav>
 

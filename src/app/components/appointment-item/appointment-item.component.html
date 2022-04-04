@@ -5,7 +5,7 @@
       <dd class="pl-2">
         <div>{{ item.student?.firstName }} {{ item.student?.lastName }}</div>
         <div>{{ item.student?.matriculationNumber }}</div>
-        <div>{{ item.student?.phoneNumber }}</div>
+        <a href="tel:{{ item.student?.phoneNumber }}" class="text-blue-500">{{ item.student?.phoneNumber }}</a>
       </dd>
     </div>
 

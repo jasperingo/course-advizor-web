@@ -40,6 +40,8 @@ import { AccountResultComponent } from './pages/account-result/account-result.co
 import { AppointmentItemComponent } from './components/appointment-item/appointment-item.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { ReportItemComponent } from './components/report-item/report-item.component';
+import { FormTextareaComponent } from './components/form-textarea/form-textarea.component';
+import { StudentResultItemComponent } from './components/student-result-item/student-result-item.component';
 
 @NgModule({
   declarations: [
@@ -77,7 +79,9 @@ import { ReportItemComponent } from './components/report-item/report-item.compon
     AccountResultComponent,
     AppointmentItemComponent,
     ModalComponent,
-    ReportItemComponent
+    ReportItemComponent,
+    FormTextareaComponent,
+    StudentResultItemComponent
   ],
   imports: [
     BrowserModule,

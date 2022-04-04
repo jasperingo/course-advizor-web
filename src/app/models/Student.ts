@@ -1,5 +1,6 @@
 import { Expose, Type } from "class-transformer";
 import { CourseAdviser } from "./CourseAdviser";
+import { StudentResult } from "./StudentResult";
 
 export class Student {
 
@@ -26,5 +27,9 @@ export class Student {
   @Type(()=> CourseAdviser)
   @Expose({ name: 'course_adviser' })
   courseAdviser?: CourseAdviser;
+
+  @Type(()=> StudentResult)
+  @Expose({ name: 'student_result' })
+  studentResult?: StudentResult[];
 
 }

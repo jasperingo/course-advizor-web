@@ -1,1 +1,79 @@
-<p>account-result works!</p>
+<div class="container mx-auto px-2">
+
+  <h2 class="font-bold text-2xl mb-4">Result</h2>
+
+  <app-loading *ngIf="resultLoading" size="big"></app-loading>
+
+  <app-error-box
+    *ngIf="resultError !== null" 
+    class="block" 
+    [message]="resultError"
+    (action)="retryFetchResult()"
+    >
+  </app-error-box>
+
+  <dl
+    *ngIf="result !== null"
+    class="w-full mb-4 p-2 rounded shadow shadow-blue-500"
+    >
+    <div class="border p-2 rounded mb-2 flex gap-2 items-center">
+      <dt class="font-bold">Course code:</dt>
+      <dd>{{result.courseCode }}</dd>
+    </div>
+    <div class="border p-2 rounded mb-2 flex gap-2 items-center">
+      <dt class="font-bold">Semester:</dt>
+      <dd>{{result.semester }}</dd>
+    </div>
+    <div class="border p-2 rounded mb-2 flex gap-2 items-center">
+      <dt class="font-bold">Session:</dt>
+      <dd>{{result.session?.startedAt }}/{{ result.session?.endedAt }}</dd>
+    </div>
+  </dl>
+
+  <div class="border rounded p-2 overflow-auto">
+
+    <app-table [data]="studentList">
+
+      <tr head>
+        <th class="py-3 px-2 text-left">S/N</th>
+        <th class="py-3 px-2 text-left">Full name</th>
+        <th class="py-3 px-2 text-left">Matriculation number</th>
+        <th class="py-3 px-2 text-left">Grade</th>
+      </tr>
+
+      <ng-template let-item>
+        <tr app-student-result-item [item]="item" *ngIf="result !== null" [result]="result" class="border-separate"></tr>
+      </ng-template>
+
+      <tr *ngIf="studentLoading">
+        <td class="border rounded p-2" colspan="4">
+          <app-loading class="block" size="big"></app-loading>
+        </td>
+      </tr> 
+      
+      <tr *ngIf="studentError !== null">
+        <td class="border rounded p-2" colspan="4">
+          <app-error-box 
+            class="block col-span-2" 
+            [message]="studentError"
+            (action)="retryFetchStudentList()"
+            >
+          </app-error-box>
+        </td>
+      </tr>
+  
+      <tr *ngIf="studentLoaded && studentList.length === 0">
+        <td class="border rounded p-2" colspan="4">
+          <app-list-empty 
+            text="No student found" 
+            class="block col-span-2"
+            >
+          </app-list-empty>
+        </td>
+      </tr>
+  
+    </app-table>
+
+  </div>
+
+</div>

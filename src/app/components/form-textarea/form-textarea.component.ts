@@ -2,25 +2,21 @@ import { Component, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'app-form-field',
-  templateUrl: './form-field.component.html',
-  styleUrls: ['./form-field.component.css']
+  selector: 'app-form-textarea',
+  templateUrl: './form-textarea.component.html',
+  styleUrls: ['./form-textarea.component.css']
 })
-export class FormFieldComponent {
+export class FormTextareaComponent {
 
   @Input() inputId!: string;
 
   @Input() labelText!: string;
-
-  @Input() inputType = 'text';
 
   @Input() parentForm!: FormGroup;
 
   @Input() controlName!: string;
 
   @Input() maxLength = '';
-
-  @Input() min = '';
 
   @Input() errors!: Map<string, string>;
 
@@ -42,10 +38,6 @@ export class FormFieldComponent {
         return this.errors.get('maxlength');
       }
 
-      if (this.control?.errors?.['pattern']) {
-        return this.errors.get('pattern');
-      }
-
       if (this.control?.errors?.['fromServer']) {
         return this.errors.get('fromServer');
       }
@@ -53,10 +45,6 @@ export class FormFieldComponent {
     }
 
     return null;
-  }
-
-  toggleVisibility() {
-    this.shown = !this.shown;
   }
 
 }

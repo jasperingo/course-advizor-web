@@ -1,11 +1,11 @@
-import { Component, ContentChild, Input, OnInit, TemplateRef } from '@angular/core';
+import { Component, ContentChild, Input, TemplateRef } from '@angular/core';
 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.css']
 })
-export class ListComponent implements OnInit {
+export class ListComponent {
 
   @Input() data: any[] = [];
 
@@ -13,10 +13,8 @@ export class ListComponent implements OnInit {
 
   @ContentChild(TemplateRef) itemTemplate!: TemplateRef<any>;
 
-  constructor() { }
-
-  ngOnInit(): void {
-    
+  trackById(_: number, item: any) {
+    return item.id;
   }
 
 }

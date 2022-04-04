@@ -1,0 +1,77 @@
+<td class="border p-2 rounded">
+  {{ item.id }}
+</td>
+<td class="border p-2 rounded">
+  {{ item.firstName }} {{ item.lastName }}
+</td>
+<td class="border p-2 rounded">
+  {{ item.matriculationNumber }}
+</td>
+<td class="border p-2 rounded">
+  <ng-template *ngIf="item.studentResult?.[0]?.grade; then gradeIs; else gradeIsNot"></ng-template>
+  <ng-template #gradeIs>{{ item.studentResult?.[0]?.grade }}</ng-template>
+  <ng-template #gradeIsNot>
+    <i>Not set</i>
+  </ng-template>
+</td>
+<td class="border p-2 rounded">
+  <button class="text-blue-500" (click)="toggleModal()">Edit</button>
+</td>
+
+<app-modal *ngIf="showModal">
+  <form [formGroup]="updateForm" (ngSubmit)="onUpdateSubmit()" class="p-4">
+    
+    <dl class="w-full md:flex gap-2 mb-4">
+      <div class="flex-grow border rounded px-2 py-1">
+        <dt class="font-bold">Student name</dt>
+        <dd>{{ item.firstName }} {{ item.lastName }}</dd>
+      </div>
+      <div class="flex-grow border rounded px-2 py-1">
+        <dt class="font-bold">Matriculation number</dt>
+        <dd>{{ item.matriculationNumber }}</dd>
+      </div>
+      <div class="flex-grow border rounded px-2 py-1">
+        <dt class="font-bold">Course code</dt>
+        <dd>{{ result.courseCode }}</dd>
+      </div>
+    </dl>
+
+    <app-form-message [error]="updateError" [success]="updateSuccess"></app-form-message>
+
+    <fieldset class="flex items-center gap-2 mb-4 justify-evenly flex-wrap">
+      <div *ngFor="let grade of gradeOptions" class="">
+        <input 
+          formControlName="grade"
+          id="grade-{{ grade.value }}-input" 
+          type="radio" 
+          name="grade" 
+          [value]="grade.value" 
+          class="sr-only" 
+          />
+        <label 
+          for="grade-{{ grade.value }}-input" 
+          class="bg-white text-blue-500 border border-blue-500 text-xl p-2 block rounded"
+          >
+          {{ grade.text }}
+        </label>
+      </div>
+    </fieldset>
+
+    <div class="flex gap-2 items-center" *ngIf="!updateLoading; else updateLoader">
+      <button 
+        type="button"
+        (click)="toggleModal()"
+        class="flex-grow p-2 font-bold rounded bg-gray-500 text-white hover:bg-gray-400" 
+        >
+        Close
+      </button>
+
+      <app-form-button label="Update" [loading]="false" class="flex-grow"></app-form-button>
+    </div>
+
+    <ng-template #updateLoader>
+      <app-loading></app-loading>
+    </ng-template>
+
+  </form>
+</app-modal>
