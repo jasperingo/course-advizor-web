@@ -20,6 +20,8 @@ export class FormFieldComponent {
 
   @Input() maxLength = '';
 
+  @Input() min = '';
+
   @Input() errors!: Map<string, string>;
 
   shown = false;

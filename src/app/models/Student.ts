@@ -4,6 +4,7 @@ import { CourseAdviser } from "./CourseAdviser";
 export class Student {
 
   @Expose()
+  @Type(()=> Number)
   id?: number;
 
   @Expose({ name: 'first_name' })

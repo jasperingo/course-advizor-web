@@ -9,7 +9,7 @@
       <button class="float-right m-2 hover:bg-blue-100 md:hidden" (click)="toggleMenu()">
         <mat-icon class="text-blue-500">close</mat-icon>
       </button>
-      <ul class="flex flex-col justify-center h-full">
+      <ul class="clear-right md:flex md:flex-col md:justify-center md:h-full">
         <app-account-header-nav-button text="Dashboard" href="/account" icon="dashboard"></app-account-header-nav-button>
         <app-account-header-nav-button text="Students" href="/account/students" icon="school"></app-account-header-nav-button>
         <app-account-header-nav-button text="Results" href="/account/results" icon="history_edu"></app-account-header-nav-button>
@@ -22,7 +22,10 @@
       <mat-icon class="text-blue-500 align-middle">menu</mat-icon>
     </button>
 
-    <h1 class="font-bold text-blue-500 text-2xl flex-grow truncate">Account</h1>
+    <h1 class="font-bold text-blue-500 text-2xl flex-grow truncate flex gap-2 items-center">
+      <mat-icon class="bg-blue-500 text-white rounded">call</mat-icon>
+      <span>Account</span>
+    </h1>
 
     <ul class="flex gap-4 items-center">
       <li>

@@ -3,6 +3,7 @@ import { Expose, Type } from 'class-transformer';
 export class Department {
 
   @Expose()
+  @Type(()=> Number)
   id?: number;
 
   @Expose()

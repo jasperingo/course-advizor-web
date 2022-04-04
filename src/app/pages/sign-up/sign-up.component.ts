@@ -96,12 +96,12 @@ export class SignUpComponent implements OnInit {
 
     this.httpService
       .get(AppModule.toApiUrl('department'))
-      .pipe(this.classMapper.responseToInstance(Department))
+      .pipe(this.classMapper.responseToInstance<Department[]>(Department))
       .subscribe({ 
         next: data => {
           this.departmentLoaded = true;
           this.departmentLoading = false;
-          this.departments = data.data.map((i: Department)=> ({ value: String(i.id), text: i.name }));
+          this.departments = data.data.map((i: Department)=> ({ value: String(i.id), text: String(i.name) }));
         },
         error: () =>  {
           this.departmentLoading = false;
@@ -118,7 +118,7 @@ export class SignUpComponent implements OnInit {
 
     this.httpService
       .get(AppModule.toApiUrl('session'))
-      .pipe(this.classMapper.responseToInstance(Session))
+      .pipe(this.classMapper.responseToInstance<Session[]>(Session))
       .subscribe({ 
         next: data => {
           this.sessionLoaded = true;
@@ -152,7 +152,7 @@ export class SignUpComponent implements OnInit {
         AppModule.toApiUrl('course-adviser'), 
         this.classMapper.toPlain(this.signUpForm.value, CourseAdviserCreateDTO)
       )
-      .pipe(this.classMapper.responseToInstance(CourseAdviser))
+      .pipe(this.classMapper.responseToInstance<CourseAdviser>(CourseAdviser))
       .subscribe({ 
         next: res => {
           this.loading = false;

@@ -10,14 +10,14 @@ export class ClassMapperService {
 
   static config: ClassTransformOptions  = { excludeExtraneousValues: true };
 
-  responseToInstance(Instance: any) {
+  responseToInstance<T>(Instance: any) {
     return map((plain: any)=> {
       const response = this.toInstance(ResponseDTO, plain);
-      
+
       if (plain.data) 
         response.data = this.toInstance(Instance, plain.data);
 
-      return response;
+      return response as ResponseDTO<T>;
     });
   }
 

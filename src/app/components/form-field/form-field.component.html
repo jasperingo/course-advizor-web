@@ -10,10 +10,11 @@
     <mat-icon class="text-base">{{ shown ? 'visibility_off' : 'visibility' }}</mat-icon>
   </button>
   <input 
-    [formControlName]="controlName" 
     [id]="inputId" 
-    [type]="inputType === 'password' && shown ? 'text' : inputType"
+    [min]="min"
     [maxlength]="maxLength"
+    [formControlName]="controlName" 
+    [type]="inputType === 'password' && shown ? 'text' : inputType"
     class="w-full rounded block pt-5 px-2 pb-2 bg-white border border-blue-500 outline-none disabled:text-gray-400" 
     />
   <span class="text-red-500 text-sm">{{ error }}</span>

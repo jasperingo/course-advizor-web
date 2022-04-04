@@ -8,12 +8,12 @@ export enum Status {
 export class ResponseDTO<T> {
 
   @Expose()
-  public status = Status.SUCCESS;
+  public status?: Status;
 
   @Expose()
   public message?: string;
 
   @Expose()
-  public data?: T;
+  public data!: T;
 
 }

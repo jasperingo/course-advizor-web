@@ -1,1 +1,28 @@
-<p>account-appointments works!</p>
+<div class="container mx-auto px-2">
+
+  <app-list [data]="list" classes="md:grid md:grid-cols-2 md:gap-4">
+
+    <ng-template let-item>
+      <app-appointment-item [item]="item"></app-appointment-item>
+    </ng-template>
+    
+    <app-loading *ngIf="loading" class="block col-span-2" size="big"></app-loading>
+    
+    <app-error-box 
+      *ngIf="error !== null" 
+      class="block col-span-2" 
+      [message]="error"
+      (action)="retryFetchList()"
+      >
+    </app-error-box>
+
+    <app-list-empty 
+      text="No appointment found" 
+      class="block col-span-2"
+      *ngIf="loaded && list.length === 0" 
+      >
+    </app-list-empty>
+    
+  </app-list>
+
+</div>

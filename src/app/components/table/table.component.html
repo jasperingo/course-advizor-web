@@ -1,0 +1,17 @@
+<table class="w-full border-separate">
+
+  <thead>
+    <ng-content select="[head]"></ng-content>
+  </thead>
+
+  <tbody>
+
+    <ng-container *ngFor="let item of data">
+      <ng-container *ngTemplateOutlet="rowTemplate; context: { $implicit: item }"></ng-container>
+    </ng-container>
+
+    <ng-content></ng-content>
+
+  </tbody>
+    
+</table>

@@ -10,7 +10,7 @@ import { CourseAdviserService } from 'src/app/services/course-adviser/course-adv
   selector: 'app-dashboard-item',
   template:  `
     <li>
-      <div class="border border-blue-500 rounded text-center px-4 py-8">
+      <div class="border border-blue-500 rounded text-center px-4 py-8 hover:bg-blue-50">
         <div class="text-4xl mb-2">{{ value }}</div>
         <div>{{ text }}</div>
       </div>
@@ -65,7 +65,7 @@ export class DashboardComponent implements OnInit {
 
     this.httpService
       .get(AppModule.toApiUrl('course-adviser/statistics'), { headers })
-      .pipe(this.classMapper.responseToInstance(CourseAdviserStatisticsDTO))
+      .pipe(this.classMapper.responseToInstance<CourseAdviserStatisticsDTO>(CourseAdviserStatisticsDTO))
       .subscribe({ 
         next: data => {
           this.loading = false;

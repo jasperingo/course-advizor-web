@@ -39,7 +39,7 @@ export class CourseAdvisersComponent implements OnInit {
 
     this.httpService
       .get(AppModule.toApiUrl('course-adviser'))
-      .pipe(this.classMapper.responseToInstance(CourseAdviser))
+      .pipe(this.classMapper.responseToInstance<CourseAdviser[]>(CourseAdviser))
       .subscribe({ 
         next: data => {
           this.loaded = true;

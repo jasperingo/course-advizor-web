@@ -77,7 +77,7 @@ export class CourseAdviserStudentComponent implements OnInit {
 
     this.httpService
       .get(AppModule.toApiUrl(`course-adviser/${this.courseAdviserID}`))
-      .pipe(this.classMapper.responseToInstance(CourseAdviser))
+      .pipe(this.classMapper.responseToInstance<CourseAdviser>(CourseAdviser))
       .subscribe({ 
         next: res => {
           this.courseAdviserLoading = false;

@@ -1,0 +1,15 @@
+<td class="border p-2 rounded">
+  {{ item.id }}
+</td>
+<td class="border p-2 rounded">
+  {{ item.courseCode }}
+</td>
+<td class="border p-2 rounded">
+  {{ item.semester }}
+</td>
+<td class="border p-2 rounded">
+  {{ item.session?.startedAt }}/{{ item.session?.endedAt }}
+</td>
+<td class="border p-2 rounded">
+  <a routerLink="/account/results/{{ item.id }}" class="text-blue-500">Edit</a>
+</td>

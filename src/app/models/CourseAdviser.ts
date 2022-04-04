@@ -5,6 +5,7 @@ import { Session } from './Session';
 export class CourseAdviser {
 
   @Expose()
+  @Type(()=> Number)
   id?: number;
 
   @Expose({ name: 'first_name' })

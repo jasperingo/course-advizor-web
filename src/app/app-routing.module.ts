@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { AccountAppointmentsComponent } from './pages/account-appointments/account-appointments.component';
 import { AccountProfileComponent } from './pages/account-profile/account-profile.component';
 import { AccountReportsComponent } from './pages/account-reports/account-reports.component';
+import { AccountResultCreateComponent } from './pages/account-result-create/account-result-create.component';
+import { AccountResultComponent } from './pages/account-result/account-result.component';
 import { AccountResultsComponent } from './pages/account-results/account-results.component';
 import { AccountStudentsComponent } from './pages/account-students/account-students.component';
 import { CourseAdviserStudentComponent } from './pages/course-adviser-student/course-adviser-student.component';
@@ -30,6 +32,8 @@ const routes: Routes = [
       { path: '', component: DashboardComponent },
       { path: 'students', component: AccountStudentsComponent },
       { path: 'results', component: AccountResultsComponent },
+      { path: 'results/create', component: AccountResultCreateComponent },
+      { path: 'results/:id', component: AccountResultComponent },
       { path: 'appointments', component: AccountAppointmentsComponent },
       { path: 'reports', component: AccountReportsComponent },
       { path: 'profile', component: AccountProfileComponent },

@@ -11,4 +11,15 @@ export class FormButtonComponent {
 
   @Input() label = 'Submit';
 
+  @Input() danger = false;
+
+  get color() {
+    return {
+      'bg-blue-500': !this.danger,
+      'hover:bg-blue-400': !this.danger,
+      'bg-red-500': this.danger,
+      'hover:bg-red-400': this.danger,
+    }
+  }
+
 }

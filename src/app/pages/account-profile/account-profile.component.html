@@ -1,1 +1,26 @@
-<p>account-profile works!</p>
+
+<div class="container mx-auto px-2 py-8 flex items-center justify-center md:py-16">
+  
+  <div class="w-full px-4 py-8 rounded shadow shadow-blue-500 md:w-96">
+    <img 
+      width="100" height="100" 
+      alt="User picture" 
+      src="/assets/images/user.webp" 
+      class="w-20 h-20 border rounded-full mb-4"
+      />
+  
+    <div class="font-bold mb-2">{{ courseAdviser?.firstName }} {{ courseAdviser?.lastName }}</div>
+    
+    <div class="mb-2">{{ courseAdviser?.phoneNumber }}</div>
+    
+    <div class="mb-2">{{ courseAdviser?.department?.name }} ({{ courseAdviser?.department?.abbreviation }})</div>
+    
+    <div class="text-gray-500 mb-4">{{ courseAdviser?.session?.startedAt }}/{{ courseAdviser?.session?.endedAt }} session</div>
+    
+    <form (submit)="onSignOutSubmit($event)">
+      <app-form-button [danger]="true" label="Sign out"></app-form-button>
+    </form>
+
+  </div>
+
+</div>

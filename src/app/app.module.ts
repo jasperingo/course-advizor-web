@@ -32,6 +32,14 @@ import { AccountResultsComponent } from './pages/account-results/account-results
 import { AccountAppointmentsComponent } from './pages/account-appointments/account-appointments.component';
 import { AccountReportsComponent } from './pages/account-reports/account-reports.component';
 import { AccountProfileComponent } from './pages/account-profile/account-profile.component';
+import { StudentItemComponent } from './components/student-item/student-item.component';
+import { ResultItemComponent } from './components/result-item/result-item.component';
+import { TableComponent } from './components/table/table.component';
+import { AccountResultCreateComponent } from './pages/account-result-create/account-result-create.component';
+import { AccountResultComponent } from './pages/account-result/account-result.component';
+import { AppointmentItemComponent } from './components/appointment-item/appointment-item.component';
+import { ModalComponent } from './components/modal/modal.component';
+import { ReportItemComponent } from './components/report-item/report-item.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +69,15 @@ import { AccountProfileComponent } from './pages/account-profile/account-profile
     AccountAppointmentsComponent,
     AccountReportsComponent,
     AccountProfileComponent,
-    DashboardItemComponent
+    DashboardItemComponent,
+    StudentItemComponent,
+    ResultItemComponent,
+    TableComponent,
+    AccountResultCreateComponent,
+    AccountResultComponent,
+    AppointmentItemComponent,
+    ModalComponent,
+    ReportItemComponent
   ],
   imports: [
     BrowserModule,

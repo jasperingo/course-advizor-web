@@ -4,7 +4,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AppModule } from 'src/app/app.module';
 import { CourseAdviserCreateDTO } from 'src/app/dtos/CourseAdviserCreateDTO';
-import { ResponseDTO } from 'src/app/dtos/ResponseDTO';
 import { CourseAdviser } from 'src/app/models/CourseAdviser';
 import { ClassMapperService } from 'src/app/services/class-mapper/class-mapper.service';
 import { CourseAdviserService } from 'src/app/services/course-adviser/course-adviser.service';
@@ -52,11 +51,11 @@ export class SigninComponent {
     this.signInForm.disable();
 
     this.httpService
-      .post<ResponseDTO<CourseAdviser>>(
+      .post(
         AppModule.toApiUrl('course-adviser/auth'), 
         this.classMapper.toPlain(this.signInForm.value, CourseAdviserCreateDTO)
       )
-      .pipe(this.classMapper.responseToInstance(CourseAdviser))
+      .pipe(this.classMapper.responseToInstance<CourseAdviser>(CourseAdviser))
       .subscribe({ 
         next: res => {
           this.loading = false;

@@ -1,1 +1,57 @@
-<p>account-results works!</p>
+<div class="container mx-auto px-2">
+
+  <div class="border rounded p-2">
+
+    <a 
+      routerLink="/account/results/create" 
+      class="p-2 inline-flex gap-2 items-center bg-blue-500 text-white rounded mb-2 hover:bg-blue-400"
+      >
+      <mat-icon>add_circle</mat-icon>
+      <span>New result</span>
+    </a>
+
+    <app-table [data]="list">
+
+      <tr head>
+        <th class="py-3 px-2 text-left">S/N</th>
+        <th class="py-3 px-2 text-left">Course Code</th>
+        <th class="py-3 px-2 text-left">Semester</th>
+        <th class="py-3 px-2 text-left">Session</th>
+      </tr>
+  
+      <ng-template let-item>
+        <tr app-result-item [item]="item" class="border-separate"></tr>
+      </ng-template>
+      
+      <tr *ngIf="loading">
+        <td class="border rounded p-2" colspan="4">
+          <app-loading class="block" size="big"></app-loading>
+        </td>
+      </tr> 
+      
+      <tr *ngIf="error !== null">
+        <td class="border rounded p-2" colspan="4">
+          <app-error-box 
+            class="block col-span-2" 
+            [message]="error"
+            (action)="retryFetchList()"
+            >
+          </app-error-box>
+        </td>
+      </tr>
+  
+      <tr *ngIf="loaded && list.length === 0">
+        <td class="border rounded p-2" colspan="4">
+          <app-list-empty 
+            text="No result found" 
+            class="block col-span-2"
+            >
+          </app-list-empty>
+        </td>
+      </tr>
+      
+    </app-table>
+
+  </div>
+
+</div>

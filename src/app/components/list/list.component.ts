@@ -7,7 +7,7 @@ import { Component, ContentChild, Input, OnInit, TemplateRef } from '@angular/co
 })
 export class ListComponent implements OnInit {
 
-  @Input() data: any = [];
+  @Input() data: any[] = [];
 
   @Input() classes = '';
 

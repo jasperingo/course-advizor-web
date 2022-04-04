@@ -1,0 +1,71 @@
+<li class="mb-4">
+  <dl class="grid grid-cols-2 shadow shadow-blue-500 p-2 rounded">
+    <div class="mb-2 row-span-2">
+      <dt class="font-bold">Student details</dt>
+      <dd class="pl-2">
+        <div>{{ item.student?.firstName }} {{ item.student?.lastName }}</div>
+        <div>{{ item.student?.matriculationNumber }}</div>
+        <div>{{ item.student?.phoneNumber }}</div>
+      </dd>
+    </div>
+
+    <div class="grid">
+      <dt class="font-bold">Meeting date</dt>
+      <dd *ngIf="item.startedAt !== null; else notFixed" class="pl-2">{{ item.startedAt | date }}</dd>
+      <ng-template #notFixed>
+        <dd class="pl-2 italic">-- Date not fixed --</dd>
+      </ng-template>
+    </div>
+
+    <div class="mb-2 col-start-2">
+      <dt class="font-bold">Request date</dt>
+      <dd class="pl-2">{{ item.createdAt | date }}</dd>
+    </div>
+
+    <button 
+      (click)="toggleModal()"
+      *ngIf="!ended; else endedBox"
+      class="bg-blue-500 text-white px-2 py-1 rounded col-span-2 hover:bg-blue-400"
+      >
+      Update
+    </button>
+
+    <ng-template #endedBox>
+      <div class="text-center bg-gray-500 text-white px-2 py-1 rounded col-span-2">Ended</div>
+    </ng-template>
+  </dl>
+
+  <app-modal *ngIf="showModal">
+    <form [formGroup]="updateForm" (ngSubmit)="onUpdateSubmit()" class="p-4">
+      
+      <app-form-message [error]="updateError" [success]="updateSuccess"></app-form-message>
+
+      <app-form-field
+        [parentForm]="updateForm"
+        controlName="startedAt"
+        inputId="meeting-date-input"
+        labelText="Meeting date"
+        inputType="datetime-local"
+        [min]="minDate"
+        >
+      </app-form-field>
+
+      <div class="flex gap-2 items-center" *ngIf="!updateLoading; else updateLoader">
+        <button 
+          type="button"
+          (click)="toggleModal()"
+          class="flex-grow p-2 font-bold rounded bg-gray-500 text-white hover:bg-gray-400" 
+          >
+          Close
+        </button>
+
+        <app-form-button label="Update" [loading]="false" class="flex-grow"></app-form-button>
+      </div>
+
+      <ng-template #updateLoader>
+        <app-loading></app-loading>
+      </ng-template>
+
+    </form>
+  </app-modal>
+</li>
