@@ -4,6 +4,8 @@
 
   <app-loading *ngIf="resultLoading" size="big"></app-loading>
 
+  <app-not-found *ngIf="resultNotFound" text="Result could not be found" [onPage]="true"></app-not-found>
+
   <app-error-box
     *ngIf="resultError !== null" 
     class="block" 
@@ -30,7 +32,7 @@
     </div>
   </dl>
 
-  <div class="border rounded p-2 overflow-auto">
+  <div *ngIf="result !== null" class="border rounded p-2 overflow-auto">
 
     <app-table [data]="studentList">
 

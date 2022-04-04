@@ -18,6 +18,8 @@ export class AccountResultComponent implements OnInit {
 
   resultLoading = false;
 
+  resultNotFound = false;
+
   resultError: string | null = null;
 
   result: Result | null = null;
@@ -70,9 +72,17 @@ export class AccountResultComponent implements OnInit {
           this.result = res.data;
           this.fetchStudentList();
         },
-        error: () =>  {
+        error: error =>  {
           this.resultLoading = false;
-          this.resultError = "Oops! Something went wrong.";
+
+          switch(error.status) {
+            case 404:
+              this.resultNotFound = true;
+              break;
+              
+            default:
+              this.resultError = "Oops! Something went wrong.";
+          }
         }
       });
   }

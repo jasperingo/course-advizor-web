@@ -6,12 +6,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatIconModule } from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './pages/home/home.component';
+import { HomeComponent, HomeFeatureComponent, HowItWorksComponent } from './pages/home/home.component';
 import { HeaderComponent } from './components/header/header.component';
 import { SigninComponent } from './pages/signin/signin.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CourseAdvisersComponent } from './pages/course-advisers/course-advisers.component';
-import { HomeFeatureComponent } from './components/home-feature/home-feature.component';
 import { FormFieldComponent } from './components/form-field/form-field.component';
 import { LoadingComponent } from './components/loading/loading.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
@@ -42,11 +41,13 @@ import { ModalComponent } from './components/modal/modal.component';
 import { ReportItemComponent } from './components/report-item/report-item.component';
 import { FormTextareaComponent } from './components/form-textarea/form-textarea.component';
 import { StudentResultItemComponent } from './components/student-result-item/student-result-item.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
+    HowItWorksComponent,
     HeaderComponent,
     SigninComponent,
     CourseAdvisersComponent,
@@ -81,7 +82,8 @@ import { StudentResultItemComponent } from './components/student-result-item/stu
     ModalComponent,
     ReportItemComponent,
     FormTextareaComponent,
-    StudentResultItemComponent
+    StudentResultItemComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

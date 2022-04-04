@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './auth/auth.guard';
+import { GuestGuard } from './auth/guest.guard';
 import { AccountAppointmentsComponent } from './pages/account-appointments/account-appointments.component';
 import { AccountProfileComponent } from './pages/account-profile/account-profile.component';
 import { AccountReportsComponent } from './pages/account-reports/account-reports.component';
@@ -11,16 +13,18 @@ import { CourseAdviserStudentComponent } from './pages/course-adviser-student/co
 import { CourseAdvisersComponent } from './pages/course-advisers/course-advisers.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { HomeComponent } from './pages/home/home.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { SigninComponent } from './pages/signin/signin.component';
 
 const routes: Routes = [
+
   { 
     path: '', 
     children: [
       { path: '', component: HomeComponent },
-      { path: 'sign-in', component: SigninComponent },
-      { path: 'sign-up', component: SignUpComponent },
+      { path: 'sign-in', component: SigninComponent, canActivate: [GuestGuard] },
+      { path: 'sign-up', component: SignUpComponent, canActivate: [GuestGuard] },
       { path: 'course-advisers', component: CourseAdvisersComponent },
       { path: 'course-adviser/:id/student', component: CourseAdviserStudentComponent },
     ] 
@@ -28,6 +32,8 @@ const routes: Routes = [
   
   { 
     path: 'account', 
+    canActivate: [AuthGuard],
+    canActivateChild: [AuthGuard],
     children: [
       { path: '', component: DashboardComponent },
       { path: 'students', component: AccountStudentsComponent },
@@ -38,7 +44,9 @@ const routes: Routes = [
       { path: 'reports', component: AccountReportsComponent },
       { path: 'profile', component: AccountProfileComponent },
     ]
-  }
+  },
+
+  { path: '**', component: NotFoundComponent }
 ];
 
 @NgModule({

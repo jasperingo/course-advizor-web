@@ -19,14 +19,13 @@
       
       <tr *ngIf="loading">
         <td class="border rounded p-2" colspan="4">
-          <app-loading *ngIf="loading" class="block col-span-2" size="big"></app-loading>
+          <app-loading class="block col-span-2" size="big"></app-loading>
         </td>
       </tr> 
 
-      <tr *ngIf="loading">
+      <tr *ngIf="error !== null">
         <td class="border rounded p-2" colspan="4">
           <app-error-box 
-            *ngIf="error !== null" 
             class="block col-span-2" 
             [message]="error"
             (action)="retryFetchList()"
@@ -35,12 +34,11 @@
         </td>
       </tr> 
       
-      <tr *ngIf="loading">
+      <tr *ngIf="loaded && list.length === 0" >
         <td class="border rounded p-2" colspan="4">
           <app-list-empty 
             text="No student found" 
             class="block col-span-2"
-            *ngIf="loaded && list.length === 0" 
             >
           </app-list-empty>
         </td>

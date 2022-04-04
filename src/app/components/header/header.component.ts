@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-header',
@@ -7,7 +8,9 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
 
-  public hideMenu: boolean = true;
+  hideMenu: boolean = true;
+
+  ivrNumber = environment.ivrNumber;
 
   toggleMenu(): void {
     this.hideMenu = !this.hideMenu;

@@ -161,7 +161,7 @@ export class SignUpComponent implements OnInit {
           this.loading = false;
           this.signUpForm.enable();
           this.courseAdviserService.courseAdviser = res.data;
-          this.router.navigateByUrl('/account/dashboard');
+          this.router.navigateByUrl('/account');
         },
         error: (error) =>  {
           this.loading = false;

@@ -61,7 +61,7 @@ export class SigninComponent {
           this.loading = false;
           this.signInForm.enable();
           this.courseAdviserService.courseAdviser = res.data;
-          this.router.navigateByUrl('/account/dashboard');
+          this.router.navigateByUrl('/account');
         },
         error: (error) =>  {
           this.loading = false;

@@ -1,7 +1,7 @@
 
 <div class="container mx-auto px-2">
   
-  <section class="flex gap-4 justify-between items-center pb-4 md:h-screen">
+  <section class="flex gap-4 justify-between items-center pb-4 md:h-screen-off-pt">
   
     <div class="py-4">
       <h2 class="font-bold text-5xl mb-4 lg:text-7xl xl:text-8xl">An IVR <br/> course advising assistant.</h2>
@@ -29,5 +29,23 @@
 
   </section>
 
-</div>
+  <section class="py-4">
 
+    <h3 class="font-bold text-2xl mb-4">How it works</h3>
+    
+    <ul class="w-full md:grid md:grid-cols-2 md:gap-4">
+      <li app-how-it-works class="mb-4" [number]="1" text="Course adviser signs up"></li>
+      <li app-how-it-works class="mb-4" [number]="2" text="Student registers under course adviser"></li>
+      <li app-how-it-works class="mb-4" [number]="3" text="Course adviser uploads student result from the dashboard"></li>
+      <li app-how-it-works class="mb-4" [number]="4" text="Student can call the number {{ ivrNumber }} to check results"></li>
+      <li app-how-it-works class="mb-4" [number]="5" text="Student can call the number {{ ivrNumber }} to request appointments with course adviser"></li>
+      <li app-how-it-works class="mb-4" [number]="6" text="Course adviser gives a date for the appointment from the dashboard"></li>
+      <li app-how-it-works class="mb-4" [number]="7" text="Student get a call from the number {{ ivrNumber }}, with the appointment date set by course adviser"></li>
+      <li app-how-it-works class="mb-4" [number]="8" text="Student can call the number {{ ivrNumber }} to send a report to course adviser"></li>
+      <li app-how-it-works class="mb-4" [number]="9" text="Course adviser listens to the report and send a reply from the dashboard"></li>
+      <li app-how-it-works class="mb-4" [number]="10" text="Student get a call from the number {{ ivrNumber }}, with the report reply sent by course adviser"></li>
+    </ul>
+
+  </section>
+
+</div>

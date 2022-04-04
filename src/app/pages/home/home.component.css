@@ -1,0 +1,10 @@
+
+@tailwind utilities;
+
+@layer utilities {
+  
+  .h-screen-off-pt {
+    height: calc(100vh - 5.5rem);
+  }
+
+}

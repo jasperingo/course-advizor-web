@@ -20,6 +20,8 @@ export class CourseAdviserStudentComponent implements OnInit {
 
   courseAdviserLoading = false;
 
+  courseAdviserNotFound = false;
+
   courseAdviserError: string | null = null;
 
   courseAdviser: CourseAdviser | null = null;
@@ -83,9 +85,17 @@ export class CourseAdviserStudentComponent implements OnInit {
           this.courseAdviserLoading = false;
           this.courseAdviser = res.data;
         },
-        error: () =>  {
+        error: error =>  {
           this.courseAdviserLoading = false;
-          this.courseAdviserError = "Oops! Something went wrong.";
+          
+          switch(error.status) {
+            case 404:
+              this.courseAdviserNotFound = true;
+              break;
+
+            default:
+              this.courseAdviserError = "Oops! Something went wrong.";
+          }
         }
       });
   }

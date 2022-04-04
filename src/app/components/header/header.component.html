@@ -15,7 +15,10 @@
         class="absolute p-2 right-0 bg-white shadow rounded min-w-max md:not-sr-only md:static md:p-0 md:flex md:gap-4 md:shadow-none"
         >
         <li class="mb-2 md:mb-0">
-          <a class="block p-2 font-bold text-gray-500 border rounded" routerLink="/account">Dashboard</a>
+          <a class="flex items-center p-2 font-bold text-blue-500 border rounded" href="tel:{{ ivrNumber }}">
+            <mat-icon class="text-center text-base">call</mat-icon>
+            <span>{{ ivrNumber }}</span>
+          </a>
         </li>
         <li class="mb-2 md:mb-0">
           <a class="block p-2 font-bold text-gray-500 border rounded" routerLink="/course-advisers">Course Advisers</a>

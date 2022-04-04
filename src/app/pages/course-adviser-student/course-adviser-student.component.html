@@ -63,6 +63,8 @@
 
   <app-loading *ngIf="courseAdviserLoading" size="big"></app-loading>
 
+  <app-not-found *ngIf="courseAdviserNotFound" text="Course adviser could not be found" [onPage]="true"></app-not-found>
+
   <app-error-box
     *ngIf="courseAdviserError !== null" 
     class="block" 
