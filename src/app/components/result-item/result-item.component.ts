@@ -7,7 +7,7 @@ import { Result } from 'src/app/models/Result';
   styleUrls: ['./result-item.component.css']
 })
 export class ResultItemComponent {
-
   @Input() item!: Result;
 
+  @Input() serialNumber!: number;
 }

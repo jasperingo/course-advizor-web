@@ -16,6 +16,7 @@ import { FormSelectOptionsType } from '../form-select/form-select.component';
   styleUrls: ['./student-result-item.component.css']
 })
 export class StudentResultItemComponent implements OnInit {
+  @Input() serialNumber!: number;
 
   @Input() item!: Student;
 

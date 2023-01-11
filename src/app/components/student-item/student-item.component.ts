@@ -7,6 +7,7 @@ import { Student } from 'src/app/models/Student';
   styleUrls: ['./student-item.component.css']
 })
 export class StudentItemComponent {
+  @Input() serialNumber!: number;
 
   @Input() item!: Student;
 

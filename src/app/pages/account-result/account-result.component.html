@@ -43,8 +43,8 @@
         <th class="py-3 px-2 text-left">Grade</th>
       </tr>
 
-      <ng-template let-item>
-        <tr app-student-result-item [item]="item" *ngIf="result !== null" [result]="result" class="border-separate"></tr>
+      <ng-template let-item let-index="index">
+        <tr app-student-result-item [item]="item" [serialNumber]="index" *ngIf="result !== null" [result]="result" class="border-separate"></tr>
       </ng-template>
 
       <tr *ngIf="studentLoading">
